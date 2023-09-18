@@ -1,0 +1,12 @@
+.contact-cart{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    border: 1px solid rgba(34,36,38,.15);
+    border-radius: 10px;
+}
+.contact-trash{
+    color: red;
+    cursor: pointer;
+}

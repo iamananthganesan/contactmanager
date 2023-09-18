@@ -12,8 +12,7 @@ class AddContact extends Component {
     }
 
     handleContactForm = (e) => {
-        e.preventDefault()
-        console.log(this.state)
+        e.preventDefault()        
         if(this.state.name == "" && this.state.email == ""){
             alert("All fields are required")
             return

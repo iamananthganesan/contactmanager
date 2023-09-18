@@ -3,9 +3,12 @@ import ContactCard from './ContactCard'
 
 const ContactList = (props) => {
     console.log(props)
-    const renderContactList = props.contactList.map((contact) => {
+    const removeContact =(id) =>{
+        props.deleteContactHandler(id)
+    }
+    const renderContactList = props?.contactList?.map((contact) => {
         return (
-            <ContactCard contact={contact} key={contact.id}/>
+            <ContactCard contact={contact} key={contact.id} removeContact={removeContact}/>
         )
     })
 
