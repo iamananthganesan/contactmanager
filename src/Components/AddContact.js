@@ -13,13 +13,15 @@ class AddContact extends Component {
 
     handleContactForm = (e) => {
         e.preventDefault()        
-        if(this.state.name == "" && this.state.email == ""){
+        if(this.state.name === "" && this.state.email === ""){
             alert("All fields are required")
             return
         } else {
             this.props.addContactHandler(this.state)
-            this.setState({id: Math.random(100), name: "",email: ""})            
+            this.setState({name: "",email: ""})
+            alert('Contact added Successfully!!!')            
         }
+
     }
     render() {
         return (

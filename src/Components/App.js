@@ -5,6 +5,7 @@ import AddContact from './AddContact'
 import ContactList from './ContactList'
 import Footer from './Footer';
 import uuid from 'react-uuid';
+import { Routes, Route } from 'react-router-dom'
 
 function App() {
   const LOCALSTORAGE_KEY = "contacts"
@@ -16,7 +17,7 @@ function App() {
       return parseContact || ""
     }
     else {
-       return []
+      return []
     }
   })
   //MOCK DATA
@@ -48,15 +49,19 @@ function App() {
     setContacts([...contacts, obj])
   }
 
-  const deleteContactHandler = (id) =>{
-    const newContactList = contacts.filter((contact)=>{ return contact.id !== id})
+  const deleteContactHandler = (id) => {
+    const newContactList = contacts.filter((contact) => { return contact.id !== id })
     setContacts(newContactList)
   }
   return (
     <div className="ui container">
-      <Header />
-      <AddContact addContactHandler={addContactHandler} />
-      <ContactList contactList={contacts} deleteContactHandler={deleteContactHandler} />
+      <Header/>      
+        <Routes>
+          <Route exact path="/" element={ <ContactList contactList={contacts} deleteContactHandler={deleteContactHandler} /> } />
+          <Route path="/addContact" element={<AddContact addContactHandler={addContactHandler} /> } />
+        </Routes>
+        {/* <AddContact addContactHandler={addContactHandler} />
+        <ContactList contactList={contacts} deleteContactHandler={deleteContactHandler} /> */}      
       {/* <Cart /> */}
       <Footer />
     </div>
