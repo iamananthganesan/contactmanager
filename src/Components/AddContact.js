@@ -1,31 +1,34 @@
 import React, { Component } from "react";
-
+import { Navigate } from "react-router-dom";
 
 class AddContact extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-            id: '',
+        this.state = {            
             name: '',
-            email: ''
+            email: '',
+            navigateTo: false
         }
     }
 
     handleContactForm = (e) => {
-        e.preventDefault()        
-        if(this.state.name === "" && this.state.email === ""){
+        e.preventDefault()
+        if (this.state.name === "" && this.state.email === "") {
             alert("All fields are required")
             return
         } else {
             this.props.addContactHandler(this.state)
-            this.setState({name: "",email: ""})
-            alert('Contact added Successfully!!!')            
+            this.setState({ name: "", email: "",id: "" })
+            alert('Contact added Successfully!!!')
         }
-
+        this.setState({ ...this.state, navigateTo: true })        
     }
     render() {
         return (
             <div className="ui main">
+                {this.state.navigateTo && (
+                    <Navigate to="/" replace={true} />
+                )}
                 <h2>Add Contact</h2>
                 <form className="ui form" onSubmit={this.handleContactForm}>
                     <div className="ui field">
