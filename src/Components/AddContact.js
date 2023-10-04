@@ -4,7 +4,7 @@ import { Navigate } from "react-router-dom";
 class AddContact extends Component {
     constructor(props) {
         super(props)
-        this.state = {            
+        this.state = {
             name: '',
             email: '',
             navigateTo: false
@@ -18,10 +18,10 @@ class AddContact extends Component {
             return
         } else {
             this.props.addContactHandler(this.state)
-            this.setState({ name: "", email: "",id: "" })
+            this.setState({ name: "", email: "", id: "" })
             alert('Contact added Successfully!!!')
         }
-        this.setState({ ...this.state, navigateTo: true })        
+        this.setState({ ...this.state, navigateTo: true })
     }
     render() {
         return (

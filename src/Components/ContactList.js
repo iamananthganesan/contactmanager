@@ -1,7 +1,7 @@
 import React from 'react'
 import ContactCard from './ContactCard'
 import { Link } from 'react-router-dom'
-const ContactList = (props) => {    
+const ContactList = (props) => {
     const contactList_MOCK_Data = [
         {
             id: 1,
@@ -19,7 +19,7 @@ const ContactList = (props) => {
         props.deleteContactHandler(id)
     }
 
-    const editContact = (id) =>{
+    const editContact = (id) => {
         props.editContactHandler(id)
     }
     const renderContactList = props?.contactList?.map((contact) => {
@@ -29,15 +29,20 @@ const ContactList = (props) => {
     })
 
     return (
-        <div className="main" style={{ marginTop: '50px' }}>        
-            <div className='ui grid'>
-                <div className='column'>
-                    <h2 className="aligned right">Contact List</h2>
+        <div className="main" style={{ marginTop: '50px' }}>
+            <div className='ui row'>
+                <div className='ui two column grid'>
+                    <div className='column'>
+                        <h2 className="aligned right">Contact List</h2>
+                    </div>
+                    <div className='right floated three wide column'>
+                        <div className='ui right aligned'>
+                            <Link to="/addContact">
+                                <button className="ui button blue">Add Contact</button>
+                            </Link>
+                        </div>
+                    </div>
                 </div>
-                <div className='column-6 aligned right'></div>
-                <Link to="/addContact">
-                    <button className="ui button blue">Add Contact</button>
-                </Link>
             </div>
             <div className='ui celled list'>
                 {renderContactList}
